@@ -18,7 +18,7 @@ This repository contains the official PyTorch implementation of **IHCL** (Import
 ## 🚀 Framework
 
 ![IHCL Architecture](figures/main.png)
-*Figure 1: The overall architecture of IHCL, featuring a dual-branch design with Importance-Guided and Learnable Views.*
+*Figure 1: IHCL's framework.
 
 ## 📂 Project Structure
 
@@ -34,3 +34,4 @@ This repository contains the official PyTorch implementation of **IHCL** (Import
 ├── requirements.txt             # Python dependencies
 ├── LICENSE.txt                  # MIT License
 └── README.md                    # Project documentation
+
