@@ -6,7 +6,7 @@
 
 This repository contains the official PyTorch implementation of **IHCL** (Importance-aware Hypergraph Contrastive Learning), a paper submitted to *Expert Systems with Applications (ESWA)*.
 
-> **Abstract:** Hypergraph neural networks are powerful for modeling high-order correlations but are often vulnerable to structural noise and distribution shifts. We propose **IHCL**, a robust framework that introduces an interpretable importance scoring mechanism integrating topological and semantic signals (e.g., degree, centrality, feature variance). By progressively masking non-essential hyperedges and maximizing mutual information between views, IHCL effectively suppresses noise while preserving discriminative patterns.
+> **Abstract:** Hypergraph modeling of higher-order interactions is essential in fields such as environmental risk assessment, biophysics, and physiology. However, robust hypergraph representation learning remains challenging due to the complexity of multi-way relationships and the prevalence of structural noise. Although conventional Hypergraph Neural Networks (HGNNs) often incorporate attention mechanisms, they typically rely on local feature aggregation over the observed incidence structure. This dependence can limit their ability to learn noise-invariant structural representations, rendering the models vulnerable to structural perturbations and distribution shifts. To address these limitations, we propose IHCL (Importance-aware Hypergraph Contrastive Learning), a robust framework that integrates importance-guided structural perturbations with contrastive learning. IHCL quantifies hyperedge importance by combining four complementary signals: hyperedge degree, intra-edge feature variance, structural centrality, and feature centrality. Guided by these importance scores, IHCL progressively masks noise-sensitive hyperedges and enforces representation consistency between the original and perturbed hypergraphs through contrastive learning. By effectively filtering out noisy connections while preserving discriminative higher-order patterns, IHCL substantially improves robustness of the system. Theoretically, we prove that importance-aware masking minimizes representation shift and preserves mutual information, leading to a tighter generalization bound compared to random strategies. Extensive experiments on eight benchmark datasets demonstrate that IHCL outperforms state-of-the-art baselines, exhibiting superior stability under structural noise and diverse data distributions.
 
 ## 🌟 Highlights
 
@@ -34,44 +34,3 @@ This repository contains the official PyTorch implementation of **IHCL** (Import
 ├── requirements.txt             # Python dependencies
 ├── LICENSE.txt                  # MIT License
 └── README.md                    # Project documentation
-🛠️ Installation
-The code is built with Python 3.8+ and PyTorch.
-
-Bash
-
-# 1. Clone this repository
-git clone [REPOSITORY_URL]
-cd IHCL
-
-# 2. Install dependencies
-pip install -r requirements.txt
-Core Dependencies:
-
-torch
-
-torch_geometric (PyG)
-
-numpy
-
-scikit-learn
-
-scipy
-
-⚡ Usage
-1. Training
-To train the model on standard benchmarks (e.g., Tox21) using main.py:
-
-Bash
-
-# Basic usage with default hyperparameters
-python main.py --dataset tox21 --lr 0.001 --epochs 100
-
-# Training on BACE with specific masking ratio
-python main.py --dataset bace --mask_ratio 0.3 --lambda_contrast 0.25
-2. Visualization & Interpretability
-IHCL provides interpretable insights into which hyperedges matter. Use the visualization script to analyze importance scores:
-
-Bash
-
-# Visualize importance distribution and critical substructures
-python visualize_hyperedge_importance.py --dataset tox21 --model_path checkpoints/best_model.pth
